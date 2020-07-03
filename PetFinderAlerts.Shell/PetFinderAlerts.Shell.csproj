@@ -56,6 +56,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="SearchFilters.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PetFinderAlerts.Library\PetFinderAlerts.Library.csproj">
