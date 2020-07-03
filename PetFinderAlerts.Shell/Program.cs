@@ -1,16 +1,14 @@
 ﻿using Newtonsoft.Json;
+using PetFinderAlerts.Library.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
 
 namespace PetFinderAlerts.Shell
 {
     class Program
     {
-        static HttpClient client = new HttpClient();
-
         static void Main(string[] args)
         {
             try
@@ -139,127 +137,5 @@ namespace PetFinderAlerts.Shell
                 yield return new Parameter("distance", searchParameters.Distance.Value, ParameterType.QueryString);
             }
         }
-    }
-
-    public class PetFinderAuthorization
-    {
-        public string token_type { get; set; }
-        public int expires_in { get; set; }
-        public string access_token { get; set; }
-    }
-
-    public class Animals
-    {
-        public List<Animal> animals { get; set; }
-        public PaginationDetails pagination { get; set; }
-    }
-
-    public class Animal
-    {
-        public long id { get; set; }
-        public string organization_id { get; set; }
-        public string url { get; set; }
-        public string type { get; set; }
-        public string species { get; set; }
-        public BreedDetails breeds { get; set; }
-        public ColorDetails colors { get; set; }
-        public string age { get; set; }
-        public string gender { get; set; }
-        public string size { get; set; }
-        public string coat { get; set; }
-        public AttributeDetails attributes { get; set; }
-        public EnvironmentDetails environment { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public string organization_animal_id { get; set; }
-        public List<PhotoUrls> photos { get; set; }
-        public PhotoUrls primary_photo_cropped { get; set; }
-        public string status { get; set; }
-        public DateTime status_changed_at { get; set; }
-        public DateTime published_at { get; set; }
-        public decimal distance { get; set; }
-        public ContactDetails contact { get; set; }
-    }
-
-    public class BreedDetails
-    {
-        public string primary { get; set; }
-        public string secondary { get; set; }
-        public bool? mixed { get; set; }
-        public bool? unknown { get; set; }
-    }
-
-    public class ColorDetails
-    {
-        public string primary { get; set; }
-        public string secondary { get; set; }
-        public string tertiary { get; set; }
-    }
-
-    public class AttributeDetails
-    {
-        public bool? spayed_neutered { get; set; }
-        public bool? house_trained { get; set; }
-        public bool? declawed { get; set; }
-        public bool? special_needs { get; set; }
-        public bool? shots_current { get; set; }
-    }
-
-    public class EnvironmentDetails
-    {
-        public bool? children { get; set; }
-        public bool? dogs { get; set; }
-        public bool? cats { get; set; }
-    }
-
-    public class PhotoUrls
-    {
-        public string small { get; set; }
-        public string medium { get; set; }
-        public string large { get; set; }
-        public string full { get; set; }
-    }
-
-    public class ContactDetails
-    {
-        public string email { get; set; }
-        public string phone { get; set; }
-        public AddressDetails address { get; set; }
-    }
-
-    public class AddressDetails
-    {
-        public string address1 { get; set; }
-        public string address2 { get; set; }
-        public string city { get; set; }
-        public string state { get; set; }
-        public string postcode { get; set; }
-        public string country { get; set; }
-    }
-
-    public class PaginationDetails
-    {
-        public int count_per_page { get; set; }
-        public int total_count { get; set; }
-        public int current_page { get; set; }
-        public int total_pages { get; set; }
-        [JsonProperty("_links")] public PaginationLinks links { get; set; }
-    }
-
-    public class PaginationLinks
-    {
-        public PaginationLink next { get; set; }
-    }
-
-    public class PaginationLink
-    {
-        public string href { get; set; }
-    }
-
-    public class AnimalSearchParameters
-    {
-        public string Type { get; set; }
-        public string Location { get; set; }
-        public int? Distance { get; set; }
     }
 }
