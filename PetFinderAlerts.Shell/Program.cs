@@ -121,7 +121,7 @@ namespace PetFinderAlerts.Shell
 
         private static IEnumerable<Parameter> GetRequestParameters(AnimalSearchParameters searchParameters)
         {
-            // Always return the maximum number of records.
+            // Always return the maximum number of records allowed by the API.
             yield return new Parameter("limit", "100", ParameterType.QueryString);
 
             if (!String.IsNullOrWhiteSpace(searchParameters.Type))
